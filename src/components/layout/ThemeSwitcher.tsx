@@ -5,10 +5,12 @@ export default function ThemeSwitcher() {
       rounded-xl
       border
       border-slate-200
-      px-3
-      py-2
+      bg-white
+      px-4
+      py-3
       text-sm
       font-medium
+      text-slate-700
       transition-all
       hover:border-blue-400
       hover:text-blue-600

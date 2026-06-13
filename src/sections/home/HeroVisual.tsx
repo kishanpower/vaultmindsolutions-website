@@ -1,157 +1,126 @@
 import { motion } from "framer-motion";
 import {
-  Brain,
-  MonitorSmartphone,
+  BrainCircuit,
   ShieldCheck,
-  CheckCircle2,
+  Cloud,
+  MonitorSmartphone,
+  Bot,
+  Database,
 } from "lucide-react";
+
+const items = [
+  {
+    icon: BrainCircuit,
+    title: "AI Solutions",
+    position: "top-0 left-1/2 -translate-x-1/2",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Systems",
+    position: "top-24 left-0",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Cyber Security",
+    position: "top-24 right-0",
+  },
+  {
+    icon: MonitorSmartphone,
+    title: "Web & Desktop",
+    position: "bottom-24 left-0",
+  },
+  {
+    icon: Bot,
+    title: "Automation",
+    position: "bottom-24 right-0",
+  },
+  {
+    icon: Database,
+    title: "Enterprise Apps",
+    position: "bottom-0 left-1/2 -translate-x-1/2",
+  },
+];
 
 export default function HeroVisual() {
   return (
-    <div className="relative hidden lg:flex items-center justify-center">
-      {/* Main Dashboard */}
+    <div className="relative hidden h-[600px] lg:block">
+      <div className="absolute inset-0 flex items-center justify-center">
 
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="
-        relative
-        w-full
-        max-w-xl
-        rounded-3xl
-        border
-        border-slate-200
-        bg-white/90
-        p-8
-        shadow-2xl
-        backdrop-blur
-      "
-      >
-        <div className="mb-6 flex items-center justify-between">
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+          }}
+          className="
+          flex
+          h-44
+          w-44
+          items-center
+          justify-center
+          rounded-full
+          bg-gradient-to-br
+          from-blue-600
+          to-cyan-500
+          text-center
+          shadow-2xl
+        "
+        >
           <div>
-            <h3 className="font-bold text-slate-900">
-              VaultMind Dashboard
+            <h3 className="text-2xl font-bold text-white">
+              VaultMind
             </h3>
 
-            <p className="text-sm text-slate-500">
-              Secure • Scalable • Intelligent
+            <p className="text-sm text-blue-100">
+              Solutions
             </p>
           </div>
+        </motion.div>
 
-          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
-            Online
-          </span>
-        </div>
+        {items.map((item) => {
+          const Icon = item.icon;
 
-        <div className="space-y-4">
-          {[
-            "Custom Software Development",
-            "AI-Powered Solutions",
-            "Business Automation",
-            "Enterprise Applications",
-          ].map((item) => (
-            <div
-              key={item}
-              className="
-              flex
-              items-center
-              justify-between
-              rounded-xl
-              border
-              border-slate-100
-              p-4
-            "
+          return (
+            <motion.div
+              key={item.title}
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+              }}
+              className={`
+                absolute
+                ${item.position}
+              `}
             >
-              <span className="font-medium text-slate-700">
-                {item}
-              </span>
+              <div
+                className="
+                rounded-2xl
+                border
+                border-slate-200
+                bg-white
+                px-5
+                py-4
+                shadow-xl
+              "
+              >
+                <Icon
+                  size={26}
+                  className="mb-2 text-blue-600"
+                />
 
-              <CheckCircle2
-                size={18}
-                className="text-green-600"
-              />
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Floating Card 1 */}
-
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-        absolute
-        -left-8
-        top-20
-        rounded-2xl
-        border
-        border-slate-200
-        bg-white
-        p-4
-        shadow-xl
-      "
-      >
-        <Brain className="mb-2 text-blue-600" />
-        <p className="font-medium">AI Solutions</p>
-      </motion.div>
-
-      {/* Floating Card 2 */}
-
-      <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-        absolute
-        right-0
-        top-6
-        rounded-2xl
-        border
-        border-slate-200
-        bg-white
-        p-4
-        shadow-xl
-      "
-      >
-        <ShieldCheck className="mb-2 text-green-600" />
-        <p className="font-medium">Secure Systems</p>
-      </motion.div>
-
-      {/* Floating Card 3 */}
-
-      <motion.div
-        animate={{ y: [0, -8, 0] }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-        absolute
-        bottom-10
-        right-5
-        rounded-2xl
-        border
-        border-slate-200
-        bg-white
-        p-4
-        shadow-xl
-      "
-      >
-        <MonitorSmartphone className="mb-2 text-cyan-600" />
-        <p className="font-medium">
-          Web & Desktop Apps
-        </p>
-      </motion.div>
+                <p className="font-semibold text-slate-700">
+                  {item.title}
+                </p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
   );
 }
