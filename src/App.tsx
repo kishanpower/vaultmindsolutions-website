@@ -1,4 +1,5 @@
 import Navbar from "./components/layout/Navbar";
+import Hero from "./sections/home/Hero";
 
 function App() {
   return (
@@ -6,7 +7,7 @@ function App() {
       <Navbar />
 
       <main>
-        <h1 className="hidden">VaultMind Solutions</h1>
+        <Hero />
       </main>
     </div>
   );
