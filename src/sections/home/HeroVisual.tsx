@@ -1,125 +1,85 @@
-import { motion } from "framer-motion";
 import {
   BrainCircuit,
   ShieldCheck,
   Cloud,
-  MonitorSmartphone,
-  Bot,
   Database,
 } from "lucide-react";
 
-const items = [
-  {
-    icon: BrainCircuit,
-    title: "AI Solutions",
-    position: "top-0 left-1/2 -translate-x-1/2",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud Systems",
-    position: "top-24 left-0",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Cyber Security",
-    position: "top-24 right-0",
-  },
-  {
-    icon: MonitorSmartphone,
-    title: "Web & Desktop",
-    position: "bottom-24 left-0",
-  },
-  {
-    icon: Bot,
-    title: "Automation",
-    position: "bottom-24 right-0",
-  },
-  {
-    icon: Database,
-    title: "Enterprise Apps",
-    position: "bottom-0 left-1/2 -translate-x-1/2",
-  },
-];
-
 export default function HeroVisual() {
   return (
-    <div className="relative hidden h-[600px] lg:block">
-      <div className="absolute inset-0 flex items-center justify-center">
-
-        <motion.div
-          animate={{
-            scale: [1, 1.05, 1],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-          }}
-          className="
-          flex
-          h-44
-          w-44
-          items-center
-          justify-center
-          rounded-full
-          bg-gradient-to-br
-          from-blue-600
-          to-cyan-500
-          text-center
+    <div className="hidden lg:block">
+      <div
+        className="
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          p-8
           shadow-2xl
         "
-        >
+      >
+        <div className="mb-8 flex items-center justify-between">
           <div>
-            <h3 className="text-2xl font-bold text-white">
-              VaultMind
+            <h3 className="text-xl font-bold">
+              VaultMind Dashboard
             </h3>
 
-            <p className="text-sm text-blue-100">
-              Solutions
+            <p className="text-slate-500">
+              Enterprise Technology Platform
             </p>
           </div>
-        </motion.div>
 
-        {items.map((item) => {
-          const Icon = item.icon;
+          <div className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+            Online
+          </div>
+        </div>
 
-          return (
-            <motion.div
-              key={item.title}
-              animate={{
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-              }}
-              className={`
-                absolute
-                ${item.position}
-              `}
-            >
-              <div
-                className="
-                rounded-2xl
-                border
-                border-slate-200
-                bg-white
-                px-5
-                py-4
-                shadow-xl
-              "
-              >
-                <Icon
-                  size={26}
-                  className="mb-2 text-blue-600"
-                />
+        <div className="space-y-4">
 
-                <p className="font-semibold text-slate-700">
-                  {item.title}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
+          <div className="flex items-center justify-between rounded-2xl border p-4">
+            <div className="flex items-center gap-3">
+              <BrainCircuit className="text-blue-600" />
+              <span>AI Solutions</span>
+            </div>
+
+            <span className="text-green-600">
+              Active
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between rounded-2xl border p-4">
+            <div className="flex items-center gap-3">
+              <Cloud className="text-cyan-600" />
+              <span>Cloud Infrastructure</span>
+            </div>
+
+            <span className="text-green-600">
+              Active
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between rounded-2xl border p-4">
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="text-blue-600" />
+              <span>Cyber Security</span>
+            </div>
+
+            <span className="text-green-600">
+              Active
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between rounded-2xl border p-4">
+            <div className="flex items-center gap-3">
+              <Database className="text-indigo-600" />
+              <span>Enterprise Systems</span>
+            </div>
+
+            <span className="text-green-600">
+              Active
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

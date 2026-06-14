@@ -1,19 +1,30 @@
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
-import Hero from "./sections/home/Hero";
-import TechStack from "./sections/home/TechStack";
-import Services from "./sections/home/Services";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className="
+        min-h-screen
+        bg-white
+        text-slate-900
+
+        dark:bg-slate-950
+        dark:text-white
+
+        transition-colors
+        duration-300
+      "
+    >
       <Navbar />
 
       <main>
-        <Hero />
-        <TechStack />
-        <Services />
+        <AppRoutes />
       </main>
+
+      <Footer />
     </div>
   );
 }

@@ -1,41 +1,41 @@
 import {
-  BrainCircuit,
-  Cog,
-  MonitorSmartphone,
-  Layers3,
+  ShieldCheck,
+  Clock3,
+  Rocket,
+  Headset,
   ArrowRight,
 } from "lucide-react";
 
-const services = [
+const reasons = [
   {
-    icon: Layers3,
-    title: "Custom Software Development",
+    icon: ShieldCheck,
+    title: "Secure By Design",
     description:
-      "Scalable, secure and business-focused software solutions tailored to your unique operational needs.",
+      "Security best practices are integrated into every phase of development, ensuring robust and reliable solutions.",
   },
   {
-    icon: BrainCircuit,
-    title: "AI Solutions",
+    icon: Rocket,
+    title: "Scalable Solutions",
     description:
-      "Intelligent AI-powered systems, assistants and automation tools that improve decision making and productivity.",
+      "Applications and systems designed to grow seamlessly with your business and future requirements.",
   },
   {
-    icon: Cog,
-    title: "Business Automation",
+    icon: Clock3,
+    title: "On-Time Delivery",
     description:
-      "Automate repetitive workflows, reduce manual effort and increase operational efficiency across departments.",
+      "Transparent project planning, clear milestones and predictable delivery schedules.",
   },
   {
-    icon: MonitorSmartphone,
-    title: "Web & Desktop Applications",
+    icon: Headset,
+    title: "Long-Term Support",
     description:
-      "Modern web platforms and enterprise desktop applications built for performance, reliability and scale.",
+      "Continuous maintenance, monitoring and enhancement services after deployment.",
   },
 ];
 
-export default function Services() {
+export default function WhyChoose() {
   return (
-    <section className="bg-slate-50 py-24">
+    <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Header */}
@@ -55,7 +55,7 @@ export default function Services() {
               text-blue-700
             "
           >
-            OUR SERVICES
+            WHY CHOOSE VAULTMIND
           </span>
 
           <h2
@@ -67,7 +67,8 @@ export default function Services() {
               md:text-5xl
             "
           >
-            Solutions Built For Growth
+            Built For Reliability,
+            Security & Growth
           </h2>
 
           <p
@@ -80,11 +81,11 @@ export default function Services() {
               text-slate-600
             "
           >
-            From custom software development
-            to AI-powered automation, we help
-            businesses transform ideas into
-            scalable digital products and
-            enterprise solutions.
+            We combine technology expertise,
+            business understanding and modern
+            development practices to deliver
+            software solutions that create
+            measurable value.
           </p>
         </div>
 
@@ -99,12 +100,12 @@ export default function Services() {
             xl:grid-cols-4
           "
         >
-          {services.map((service) => {
-            const Icon = service.icon;
+          {reasons.map((reason) => {
+            const Icon = reason.icon;
 
             return (
               <div
-                key={service.title}
+                key={reason.title}
                 className="
                   group
                   rounded-3xl
@@ -120,8 +121,6 @@ export default function Services() {
                   hover:shadow-2xl
                 "
               >
-                {/* Icon */}
-
                 <div
                   className="
                     flex
@@ -140,8 +139,6 @@ export default function Services() {
                   <Icon size={30} />
                 </div>
 
-                {/* Title */}
-
                 <h3
                   className="
                     mt-6
@@ -150,10 +147,8 @@ export default function Services() {
                     text-slate-900
                   "
                 >
-                  {service.title}
+                  {reason.title}
                 </h3>
-
-                {/* Description */}
 
                 <p
                   className="
@@ -162,10 +157,8 @@ export default function Services() {
                     text-slate-600
                   "
                 >
-                  {service.description}
+                  {reason.description}
                 </p>
-
-                {/* CTA */}
 
                 <div
                   className="
@@ -195,6 +188,39 @@ export default function Services() {
             );
           })}
         </div>
+
+        {/* Bottom Trust Bar */}
+
+        <div
+          className="
+            mt-20
+            rounded-3xl
+            border
+            border-slate-200
+            bg-slate-50
+            p-8
+            text-center
+          "
+        >
+          <h3 className="text-2xl font-bold text-slate-900">
+            Your Technology Partner For The Long Term
+          </h3>
+
+          <p
+            className="
+              mx-auto
+              mt-4
+              max-w-3xl
+              text-slate-600
+            "
+          >
+            From planning and development to deployment
+            and support, VaultMind Solutions helps
+            businesses build technology foundations
+            that enable sustainable growth.
+          </p>
+        </div>
+
       </div>
     </section>
   );
