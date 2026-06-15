@@ -1,6 +1,8 @@
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
+import { Toaster } from "react-hot-toast";
+
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
       <Footer />
     </div>
   );
+  <Toaster position="top-right" />
 }
 
 export default App;

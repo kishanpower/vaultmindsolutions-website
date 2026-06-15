@@ -1,3 +1,7 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
+
 import {
   Mail,
   Phone,
@@ -11,6 +15,84 @@ import {
 } from "lucide-react";
 
 export default function Contact() {
+
+  const SERVICE_ID = "servicevms";
+  const TEMPLATE_ID = "templatevms";
+  const PUBLIC_KEY = "gYciqVfVZBIooM9yM";
+
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent
+  ) => {
+    e.preventDefault();
+
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.message
+    ) {
+      toast.error(
+        "Please fill all required fields"
+      );
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        PUBLIC_KEY
+      );
+
+      toast.success(
+        "Message sent successfully!"
+      );
+
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+
+      toast.error(
+        "Failed to send message"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="bg-white">
 
@@ -189,7 +271,10 @@ export default function Contact() {
                 we'll get back to you shortly.
               </p>
 
-              <div className="mt-10 space-y-6">
+              <form
+                  onSubmit={handleSubmit}
+                  className="mt-10 space-y-6"
+                >
 
                 <div>
                   <label className="mb-2 block font-medium">
@@ -198,6 +283,9 @@ export default function Contact() {
 
                   <input
                     type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                     className="
                       w-full
                       rounded-2xl
@@ -218,6 +306,9 @@ export default function Contact() {
 
                   <input
                     type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                     className="
                       w-full
                       rounded-2xl
@@ -238,6 +329,9 @@ export default function Contact() {
 
                   <input
                     type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
                     className="
                       w-full
                       rounded-2xl
@@ -257,6 +351,9 @@ export default function Contact() {
                   </label>
 
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={6}
                     className="
                       w-full
@@ -272,6 +369,8 @@ export default function Contact() {
                 </div>
 
                 <button
+                  type="submit"
+                  disabled={loading}
                   className="
                     inline-flex
                     items-center
@@ -288,14 +387,17 @@ export default function Contact() {
                     duration-300
                     hover:-translate-y-1
                     hover:shadow-xl
+                    disabled:opacity-60
                   "
                 >
-                  Send Inquiry
+                  {loading
+                    ? "Sending..."
+                    : "Send Inquiry"}
 
                   <Send size={18} />
                 </button>
 
-              </div>
+              </form>
             </div>
 
             {/* WHY US */}
@@ -412,3 +514,5 @@ export default function Contact() {
     </div>
   );
 }
+
+

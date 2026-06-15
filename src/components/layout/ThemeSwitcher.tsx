@@ -9,45 +9,34 @@ export default function ThemeSwitcher({
   scrolled,
 }: ThemeSwitcherProps) {
   const [darkMode, setDarkMode] =
-    useState(false);
+    useState(() => {
+      return (
+        localStorage.getItem("theme") ===
+        "dark"
+      );
+    });
 
   useEffect(() => {
-    const savedTheme =
-      localStorage.getItem("theme");
-
-    if (savedTheme === "dark") {
+    if (darkMode) {
       document.documentElement.classList.add(
-        "dark"
-      );
-
-      setDarkMode(true);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newMode = !darkMode;
-
-    setDarkMode(newMode);
-
-    if (newMode) {
-      document.documentElement.classList.add(
-        "dark"
-      );
-
-      localStorage.setItem(
-        "theme",
         "dark"
       );
     } else {
       document.documentElement.classList.remove(
         "dark"
       );
-
-      localStorage.setItem(
-        "theme",
-        "light"
-      );
     }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    const next = !darkMode;
+
+    setDarkMode(next);
+
+    localStorage.setItem(
+      "theme",
+      next ? "dark" : "light"
+    );
   };
 
   return (
@@ -77,6 +66,12 @@ export default function ThemeSwitcher({
               text-slate-700
               hover:border-blue-400
               hover:text-blue-600
+
+              dark:border-slate-700
+              dark:bg-slate-900
+              dark:text-slate-200
+              dark:hover:border-cyan-400
+              dark:hover:text-cyan-400
             `
             : `
               border
