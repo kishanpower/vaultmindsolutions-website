@@ -26,7 +26,11 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
+    service: "",
+    budget: "",
+    timeline: "",
     message: "",
   });
 
@@ -47,10 +51,14 @@ export default function Contact() {
     e.preventDefault();
 
     if (
-      !formData.name ||
-      !formData.email ||
-      !formData.message
-    ) {
+        !formData.name ||
+        !formData.email ||
+        !formData.phone ||
+        !formData.service ||
+        !formData.budget ||
+        !formData.timeline ||
+        !formData.message
+      ) {
       toast.error(
         "Please fill all required fields"
       );
@@ -66,7 +74,11 @@ export default function Contact() {
         {
           name: formData.name,
           email: formData.email,
+          phone: formData.phone,
           company: formData.company,
+          service: formData.service,
+          budget: formData.budget,
+          timeline: formData.timeline,
           message: formData.message,
           time: new Date().toLocaleString(),
         },
@@ -80,7 +92,11 @@ export default function Contact() {
       setFormData({
         name: "",
         email: "",
+        phone: "",
         company: "",
+        service: "",
+        budget: "",
+        timeline: "",
         message: "",
       });
     } catch (error) {
@@ -325,6 +341,30 @@ export default function Contact() {
 
                 <div>
                   <label className="mb-2 block font-medium">
+                    Mobile Number *
+                  </label>
+
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+91 XXXXX XXXXX"
+                    className="
+                      w-full
+                      rounded-2xl
+                      border
+                      border-slate-300
+                      px-5
+                      py-4
+                      outline-none
+                      focus:border-blue-500
+                    "
+                  />
+                </div>
+        
+                <div>
+                  <label className="mb-2 block font-medium">
                     Company Name
                   </label>
 
@@ -344,6 +384,152 @@ export default function Contact() {
                       focus:border-blue-500
                     "
                   />
+                </div>
+
+                <div>
+                  <label className="mb-2 block font-medium">
+                    Service Required *
+                  </label>
+
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="
+                      w-full
+                      rounded-2xl
+                      border
+                      border-slate-300
+                      px-5
+                      py-4
+                      outline-none
+                      focus:border-blue-500
+                    "
+                  >
+                    <option value="">
+                      Select Service
+                    </option>
+
+                    <option value="ERP Development">
+                      ERP Development
+                    </option>
+
+                    <option value="CRM Software">
+                      CRM Software
+                    </option>
+
+                    <option value="Custom Software">
+                      Custom Software
+                    </option>
+
+                    <option value="AI Automation">
+                      AI Automation
+                    </option>
+
+                    <option value="Website Development">
+                      Website Development
+                    </option>
+
+                    <option value="Mobile App Development">
+                      Mobile App Development
+                    </option>
+
+                    <option value="Digital Transformation">
+                      Digital Transformation
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-2 block font-medium">
+                    Budget Range *
+                  </label>
+
+                  <select
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className="
+                      w-full
+                      rounded-2xl
+                      border
+                      border-slate-300
+                      px-5
+                      py-4
+                      outline-none
+                      focus:border-blue-500
+                    "
+                  >
+                    <option value="">
+                      Select Budget
+                    </option>
+
+                    <option value="Below ₹50,000">
+                      Below ₹50,000
+                    </option>
+
+                    <option value="₹50,000 - ₹1 Lakh">
+                      ₹50,000 - ₹1 Lakh
+                    </option>
+
+                    <option value="₹1 Lakh - ₹3 Lakh">
+                      ₹1 Lakh - ₹3 Lakh
+                    </option>
+
+                    <option value="₹3 Lakh - ₹5 Lakh">
+                      ₹3 Lakh - ₹5 Lakh
+                    </option>
+
+                    <option value="₹5 Lakh+">
+                      ₹5 Lakh+
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-2 block font-medium">
+                    Project Timeline *
+                  </label>
+
+                  <select
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                    className="
+                      w-full
+                      rounded-2xl
+                      border
+                      border-slate-300
+                      px-5
+                      py-4
+                      outline-none
+                      focus:border-blue-500
+                    "
+                  >
+                    <option value="">
+                      Select Timeline
+                    </option>
+
+                    <option value="Immediately">
+                      Immediately
+                    </option>
+
+                    <option value="Within 1 Month">
+                      Within 1 Month
+                    </option>
+
+                    <option value="1-3 Months">
+                      1-3 Months
+                    </option>
+
+                    <option value="3-6 Months">
+                      3-6 Months
+                    </option>
+
+                    <option value="Flexible">
+                      Flexible
+                    </option>
+                  </select>
                 </div>
 
                 <div>
@@ -519,5 +705,4 @@ export default function Contact() {
     </div>
   );
 }
-
 
