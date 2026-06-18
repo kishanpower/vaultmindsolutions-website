@@ -1,3 +1,4 @@
+import FAQ from "../sections/contact/FAQ";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
@@ -461,6 +462,10 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+
+      <FAQ />
 
       {/* CTA */}
 

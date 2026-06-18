@@ -1,3 +1,6 @@
+import WhatsAppButton from "./components/common/WhatsAppButton";
+import VaultMindAI
+from "./components/common/VaultMindAI";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
@@ -26,10 +29,14 @@ function App() {
         <AppRoutes />
       </main>
 
+      <VaultMindAI />
+
       <Footer />
+      <WhatsAppButton />
     </div>
   );
   <Toaster position="top-right" />
 }
 
 export default App;
+

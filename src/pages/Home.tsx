@@ -1,5 +1,4 @@
 import SEO from "../components/seo/SEO";
-
 import Hero from "../sections/home/Hero";
 import TechStack from "../sections/home/TechStack";
 import TrustedBy from "../sections/home/TrustedBy";
@@ -9,6 +8,7 @@ import Process from "../sections/home/Process";
 import Stats from "../sections/home/Stats";
 import Portfolio from "../sections/home/Portfolio";
 import CTA from "../sections/home/CTA";
+import Testimonials from "../sections/home/Testimonials";
 
 export default function Home() {
   return (
@@ -27,7 +27,10 @@ export default function Home() {
       <WhyChoose />
       <Process />
       <Portfolio />
+      <Testimonials />
       <CTA />
+      
+
     </>
   );
 }

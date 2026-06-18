@@ -3,6 +3,7 @@ import {
   Users,
   Trophy,
   ShieldCheck,
+  Headphones,
 } from "lucide-react";
 
 const stats = [
@@ -25,6 +26,11 @@ const stats = [
     icon: ShieldCheck,
     value: "100%",
     label: "Secure Development",
+  },
+  {
+    icon: Headphones,
+    value: "24/7",
+    label: "Support Available",
   },
 ];
 
@@ -84,7 +90,7 @@ export default function Stats() {
 
         {/* Stats Grid */}
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-5">
           {stats.map((item) => {
             const Icon = item.icon;
 
