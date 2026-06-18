@@ -1,6 +1,6 @@
-import WhatsAppButton from "./components/common/WhatsAppButton";
-import VaultMindAI
-from "./components/common/VaultMindAI";
+import WhatsAppChat from "./components/common/WhatsAppChat";
+import VaultMindAI from "./components/common/VaultMindAI";
+
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
@@ -15,10 +15,8 @@ function App() {
         min-h-screen
         bg-white
         text-slate-900
-
         dark:bg-slate-950
         dark:text-white
-
         transition-colors
         duration-300
       "
@@ -32,11 +30,17 @@ function App() {
       <VaultMindAI />
 
       <Footer />
-      <WhatsAppButton />
+
+      <WhatsAppChat />
+
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
     </div>
   );
-  <Toaster position="top-right" />
 }
 
 export default App;
-
