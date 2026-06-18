@@ -36,7 +36,9 @@ export default function Contact() {
 
   const handleChange = (
     e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement
+      HTMLInputElement |
+      HTMLTextAreaElement |
+      HTMLSelectElement
     >
   ) => {
     setFormData({
@@ -86,7 +88,7 @@ export default function Contact() {
       );
 
       toast.success(
-        "Message sent successfully!"
+        "Inquiry submitted successfully. Our team will contact you shortly."
       );
 
       setFormData({
@@ -103,7 +105,7 @@ export default function Contact() {
       console.error(error);
 
       toast.error(
-        "Failed to send message"
+        "Failed to submit inquiry"
       );
     } finally {
       setLoading(false);
@@ -180,7 +182,7 @@ export default function Contact() {
       <section className="-mt-20 relative z-10">
         <div className="mx-auto max-w-7xl px-6">
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-4">
 
             <div
               className="
@@ -206,7 +208,15 @@ export default function Contact() {
               </h3>
 
               <p className="mt-3 text-slate-600">
-                info@vaultmindsolutions.com
+                <a
+                  href="mailto:info@vaultmindsolutions.com"
+                  className="
+                    text-blue-600
+                    hover:underline
+                  "
+                >
+                  info@vaultmindsolutions.com
+                </a>
               </p>
             </div>
 
@@ -234,7 +244,15 @@ export default function Contact() {
               </h3>
 
               <p className="mt-3 text-slate-600">
-                +91 XXXXX XXXXX
+                <a
+                  href="tel:+919799666500"
+                  className="
+                    text-cyan-600
+                    hover:underline
+                  "
+                >
+                  +91 9799666500
+                </a>
               </p>
             </div>
 
@@ -262,8 +280,50 @@ export default function Contact() {
               </h3>
 
               <p className="mt-3 text-slate-600">
-                India
+                <div className="space-y-1">
+                  <p>Bikaner, Rajasthan</p>
+                  <p>New Delhi</p>
+                  <p>Hyderabad</p>
+                </div>
               </p>
+            </div>
+
+            <div
+              className="
+                rounded-3xl
+                border
+                border-slate-200
+                bg-white
+                p-8
+                text-center
+                shadow-xl
+                transition-all
+                duration-300
+                hover:-translate-y-2
+              "
+            >
+              <Phone
+                size={40}
+                className="mx-auto text-green-600"
+              />
+
+              <h3 className="mt-5 text-xl font-bold">
+                WhatsApp
+              </h3>
+
+              <a
+                href="https://wa.me/919799666500"
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  mt-3
+                  inline-block
+                  text-green-600
+                  hover:underline
+                "
+              >
+                Chat Instantly
+              </a>
             </div>
 
           </div>
@@ -289,105 +349,125 @@ export default function Contact() {
               </p>
 
               <form
-                  onSubmit={handleSubmit}
-                  className="mt-10 space-y-6"
-                >
+                onSubmit={handleSubmit}
+                className="
+                  mt-8
+                  rounded-32px
+                  border
+                  border-slate-200
+                  bg-white
+                  p-8
+                  shadow-xl
+                  space-y-5
+                "
+              >
 
-                <div>
-                  <label className="mb-2 block font-medium">
-                    Full Name
-                  </label>
+                <div className="grid gap-5 md:grid-cols-2">
 
-                  <input
-                    type="text"
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-slate-700">
+                      Full Name *
+                    </label>
+
+                    <input
+                      type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                    className="
-                      w-full
-                      rounded-2xl
-                      border
-                      border-slate-300
-                      px-5
-                      py-4
-                      outline-none
-                      focus:border-blue-500
-                    "
-                  />
+                      className="
+                        w-full
+                        rounded-xl
+                        border
+                        border-slate-300
+                        px-2
+                        py-1
+                        outline-none
+                        transition-all
+                        focus:border-blue-500
+                        focus:ring-2
+                        focus:ring-blue-100
+                      "
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-slate-700">
+                      Company Name
+                    </label>
+
+                    <input
+                      type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                      className="
+                        w-full
+                        rounded-xl
+                        border
+                        border-slate-300
+                        px-2
+                        py-1
+                        outline-none
+                        focus:border-blue-500
+                      "
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="mb-2 block font-medium">
-                    Email Address
-                  </label>
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-slate-700">
+                      Email Address *
+                    </label>
 
-                  <input
-                    type="email"
+                    <input
+                      type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                    className="
-                      w-full
-                      rounded-2xl
-                      border
-                      border-slate-300
-                      px-5
-                      py-4
-                      outline-none
-                      focus:border-blue-500
-                    "
-                  />
-                </div>
+                      className="
+                        w-full
+                        rounded-xl
+                        border
+                        border-slate-300
+                        px-2
+                        py-1
+                        outline-none
+                        transition-all
+                        focus:border-blue-500
+                        focus:ring-2
+                        focus:ring-blue-100
+                      "
+                    />
+                  </div>
 
-                <div>
-                  <label className="mb-2 block font-medium">
-                    Mobile Number *
-                  </label>
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-slate-700">
+                      Mobile Number *
+                    </label>
 
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 XXXXX XXXXX"
-                    className="
-                      w-full
-                      rounded-2xl
-                      border
-                      border-slate-300
-                      px-5
-                      py-4
-                      outline-none
-                      focus:border-blue-500
-                    "
-                  />
-                </div>
-        
-                <div>
-                  <label className="mb-2 block font-medium">
-                    Company Name
-                  </label>
-
-                  <input
-                    type="text"
-                      name="company"
-                      value={formData.company}
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
                       onChange={handleChange}
-                    className="
-                      w-full
-                      rounded-2xl
-                      border
-                      border-slate-300
-                      px-5
-                      py-4
-                      outline-none
-                      focus:border-blue-500
-                    "
-                  />
+                      placeholder="+91 XXXXX XXXXX"
+                      className="
+                        w-full
+                        rounded-xl
+                        border
+                        border-slate-300
+                        px-2
+                        py-1
+                        outline-none
+                        focus:border-blue-500
+                      "
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="mb-2 block font-medium">
+                  <label className="mb-2 block text-sm font-semibold text-slate-700">
                     Service Required *
                   </label>
 
@@ -397,13 +477,16 @@ export default function Contact() {
                     onChange={handleChange}
                     className="
                       w-full
-                      rounded-2xl
+                      rounded-xl
                       border
                       border-slate-300
-                      px-5
-                      py-4
+                      px-2
+                      py-1
                       outline-none
+                      transition-all
                       focus:border-blue-500
+                      focus:ring-2
+                      focus:ring-blue-100
                     "
                   >
                     <option value="">
@@ -440,6 +523,7 @@ export default function Contact() {
                   </select>
                 </div>
 
+              <div className="grid gap-5 md:grid-cols-2">
                 <div>
                   <label className="mb-2 block font-medium">
                     Budget Range *
@@ -451,11 +535,11 @@ export default function Contact() {
                     onChange={handleChange}
                     className="
                       w-full
-                      rounded-2xl
+                      rounded-xl
                       border
                       border-slate-300
-                      px-5
-                      py-4
+                      px-2
+                      py-1
                       outline-none
                       focus:border-blue-500
                     "
@@ -497,11 +581,11 @@ export default function Contact() {
                     onChange={handleChange}
                     className="
                       w-full
-                      rounded-2xl
+                      rounded-xl
                       border
                       border-slate-300
-                      px-5
-                      py-4
+                      px-2
+                      py-1
                       outline-none
                       focus:border-blue-500
                     "
@@ -531,7 +615,8 @@ export default function Contact() {
                     </option>
                   </select>
                 </div>
-
+              </div>
+              
                 <div>
                   <label className="mb-2 block font-medium">
                     Message
@@ -544,11 +629,11 @@ export default function Contact() {
                     rows={6}
                     className="
                       w-full
-                      rounded-2xl
+                      rounded-xl
                       border
                       border-slate-300
-                      px-5
-                      py-4
+                      px-2
+                      py-1
                       outline-none
                       focus:border-blue-500
                     "
@@ -562,12 +647,12 @@ export default function Contact() {
                     inline-flex
                     items-center
                     gap-2
-                    rounded-2xl
+                    rounded-xl
                     bg-gradient-to-r
                     from-blue-600
                     to-cyan-500
                     px-8
-                    py-4
+                    py-3
                     font-semibold
                     text-white
                     transition-all
@@ -649,6 +734,67 @@ export default function Contact() {
         </div>
       </section>
 
+      <section className="py-24 bg-slate-50">
+
+        <div className="mx-auto max-w-7xl px-6">
+
+          <h2
+            className="
+              text-center
+              text-4xl
+              font-bold
+            "
+          >
+            Our Locations
+          </h2>
+
+          <div
+            className="
+              mt-12
+              grid
+              gap-6
+              md:grid-cols-3
+            "
+          >
+
+            <div className="rounded-3xl border bg-white p-8">
+              <h3 className="font-bold text-xl">
+                Bikaner
+              </h3>
+
+              <p className="mt-3 text-slate-600">
+                Rajasthan, India
+              </p>
+            </div>
+
+            <div className="rounded-3xl border bg-white p-8">
+              <h3 className="font-bold text-xl">
+                New Delhi
+              </h3>
+
+              <p className="mt-3 text-slate-600">
+                Delhi, India
+              </p>
+            </div>
+
+            <div className="rounded-3xl border bg-white p-8">
+              <h3 className="font-bold text-xl">
+                Hyderabad
+              </h3>
+
+              <p className="mt-3 text-slate-600">
+                Telangana, India
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
       {/* FAQ */}
 
       <FAQ />
@@ -688,7 +834,7 @@ export default function Contact() {
                 rounded-2xl
                 bg-white
                 px-8
-                py-4
+                py-3
                 font-semibold
                 text-blue-700
               "
